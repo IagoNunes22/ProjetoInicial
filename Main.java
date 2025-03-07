@@ -1,39 +1,42 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int large, alt, comp;
-        double valor;
-        String resposta = "S";
-do {
-    System.out.println(" ----------------------- ");
-    System.out.println(" Calculadora Cm para m^3 ");
-    System.out.println(" ----------------------- ");
+        Scanner sc  = new Scanner(System.in);
+    String Aluno, AlunoMaior = " ";
+    double Nota;
+    double Maior = 0;
+int quant;
+int cont = 0;
 
-    System.out.println("Digite a largura ");
-    large = sc.nextInt();
-    System.out.println("Digite a altura ");
-    alt = sc.nextInt();
-    System.out.println("Digite o comprimento ");
-    comp = sc.nextInt();
-    valor = large * alt * comp;
-    System.out.println(+large + "x" + alt + "x" + comp + " é igual a " + valor / 1000000 +" m^3");
+        System.out.println("Digite quantos alunos tem: ");
+        quant = sc.nextInt();
+    while (cont < quant) {
+        System.out.println(" -------------------- ");
+        System.out.println("Digite o nome do aluno: ");
+        Aluno = sc.next().toString();
+        System.out.println(" -------------------- ");
 
-    System.out.println("DESEJA CONTINUAR? (S) ou (N)");
-    resposta  = sc.next();
-}while (resposta.equals("S"));
+        System.out.println(" -------------------- ");
+        System.out.println(" Digite a nota do aluno:");
+        Nota = sc.nextDouble();
+        System.out.println(" -------------------- ");
 
-System.out.println("Programa encerrado");
+        if (Nota >= Maior) {
+            Maior = Nota;
+            AlunoMaior = Aluno;
+        }
 
-sc.close();
-
-
-
-
+        cont = cont + 1;
     }
+        System.out.println("A maior nota foi:" + Maior);
+        System.out.println("A maior nota foi de:" + AlunoMaior);
 
-}
+
+
+
+
+
+        }
+    }
