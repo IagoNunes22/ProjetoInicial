@@ -1,50 +1,39 @@
 import java.util.Scanner;
 
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int large, alt, comp;
+        double valor;
+        String resposta = "S";
+do {
+    System.out.println(" ----------------------- ");
+    System.out.println(" Calculadora Cm para m^3 ");
+    System.out.println(" ----------------------- ");
 
-        Scanner sc = new Scanner (System.in);
+    System.out.println("Digite a largura ");
+    large = sc.nextInt();
+    System.out.println("Digite a altura ");
+    alt = sc.nextInt();
+    System.out.println("Digite o comprimento ");
+    comp = sc.nextInt();
+    valor = large * alt * comp;
+    System.out.println(+large + "x" + alt + "x" + comp + " é igual a " + valor / 1000000 +" m^3");
 
-        double N;
-        int escolha;
+    System.out.println("DESEJA CONTINUAR? (S) ou (N)");
+    resposta  = sc.next();
+}while (resposta.equals("S"));
 
-        System.out.println(" -----------------------");
-        System.out.println(" CONVERSOR DE MEDIDA (M) ");
-        System.out.println(" -----------------------");
+System.out.println("Programa encerrado");
 
-        System.out.println("Digite um numero");
-        N = sc.nextDouble();
+sc.close();
 
-        System.out.println("1 - km");
-        System.out.println("2 - hm");
-        System.out.println("3 - dam");
-        System.out.println("4 - dm");
-        System.out.println("5 - cm");
-        System.out.println("6 - mm");
-        escolha =  sc.nextInt();
-        switch (escolha) {
-            case 1:
-                System.out.println(N / 1000+"Km");
-                break;
-            case 2:
-                System.out.println(N / 100+"Hm");
-                break;
-            case 3:
-                System.out.println(N / 10+"dam");
-                break;
-            case 4:
-                System.out.println(N * 10+"dm");
-                break;
-            case 5:
-                System.out.println(N * 100+"cm");
-                break;
-            case 6:
-                System.out.println(N * 1000+"mm");
-                break;
-            default:
-                System.out.println("Error");
-        }
+
 
 
     }
+
 }
