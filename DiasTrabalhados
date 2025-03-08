@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+Scanner sc =  new Scanner(System.in);
+int diasTrabalhados, salario;
+int horas = 8;
+int horasTrabalhadas = 25;
+
+System.out.println("Quantas dias o funcionario trabalhou? ");
+ diasTrabalhados = sc.nextInt();
+ salario = diasTrabalhados * (horas * horasTrabalhadas);
+ System.out.println("Salario do funcionario: " + salario);
+
+
+
+
+        }
+    }
