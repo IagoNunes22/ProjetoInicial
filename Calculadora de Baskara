@@ -1,27 +1,34 @@
+
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        double a, b, c;
+        String resposta = "S";
+        do {
+            double a, b, c;
 
-       System.out.println("Digite o A ");
-       a = sc.nextDouble();
-       System.out.println("Digite o B ");
-       b = sc.nextDouble();
-       System.out.println("Digite o C ");
-       c = sc.nextDouble();
-        double Delta = Math.pow (b, 2) - (4*a*c);
-        if (Delta < 0) {
-            System.out.println(Delta + " é negativo logo não existe raizes.");}
-        else {
-            double X1 = (-b + Math.sqrt(Delta)) / (2 * a);
-            double X2 = (-b - Math.sqrt(Delta)) / (2 * a);
+            System.out.println("Digite o A ");
+            a = sc.nextDouble();
+            System.out.println("Digite o B ");
+            b = sc.nextDouble();
+            System.out.println("Digite o C ");
+            c = sc.nextDouble();
+            double Delta = Math.pow(b, 2) - (4 * a * c);
+            if (Delta < 0) {
+                System.out.println(Delta + " é negativo logo não existe raizes.");
+            } else {
+                double X1 = (b + Math.sqrt(Delta)) / (2 * a);
+                double X2 = (b - Math.sqrt(Delta)) / (2 * a);
 
-            System.out.println("Raizes");
-            System.out.println("x1 = " + X1);
-            System.out.println("x2 = " + X2);
-        }
-        }
+                System.out.println("Raizes");
+                System.out.println("x1 = " + X1);
+                System.out.println("x2 = " + X2);
+            }
+            System.out.println("DESEJA CONTINUAR? (S) ou (N)");
+            resposta = sc.next().toUpperCase();
+        }while (resposta.equals("S"));
     }
+}
