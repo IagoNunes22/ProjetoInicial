@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+Scanner sc =  new Scanner(System.in);
+int quantCigarrosDias, anosFumados, quantCigarros, diasPerdidos;
+int reducaoVida = 10; // Minutos
+int Dia = 1440; //Minutos
+System.out.println(" Quantos cigarros fuma por dia ");
+quantCigarrosDias = sc.nextInt();
+System.out.println(" Quantos anos fuma" );
+anosFumados = sc.nextInt();
+
+ quantCigarros = quantCigarrosDias * (365 * anosFumados);
+ diasPerdidos = Dia + (reducaoVida * quantCigarros);
+
+System.out.println(" Dias perdidos:"+ diasPerdidos / 1440);
+
+
+        }
+    }
