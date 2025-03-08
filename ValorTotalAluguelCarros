@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+int KmPercorridos, QuantDias;
+double KmPercorridosValor = 0.20;
+double QuantDiasValor = 90;
+ System.out.println("Quantos Km foi percorrido? ");
+ KmPercorridos = sc.nextInt();
+ System.out.println("Quantos Dias foi alugado? ");
+ QuantDias = sc.nextInt();
+ double totalKm = KmPercorridos * KmPercorridosValor;
+ double totalDias = QuantDias * QuantDiasValor;
+ double valorFinal = totalKm + totalDias;
+ System.out.println("Total a pagar: " + valorFinal);
+
+        }
+    }
