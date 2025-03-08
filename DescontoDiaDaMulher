@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        String nome, sexo;
+        String resposta = "S";
+        int valor, valorM, valorH;
+        String cpf;
+        String respostaNF = "S";
+
+
+            System.out.println(" ------------------------------ ");
+            System.out.println(" DESCONTO DIA DA MULHER ");
+            System.out.println(" (5%) HOMENS / MULHERES (15%) ");
+            System.out.println(" ------------------------------ ");
+
+            System.out.println("Digite seu nome: ");
+            nome = scan.nextLine();
+        do {
+
+            System.out.println("Digite seu cpf: (Sem simbolos especiais) ");
+            cpf = scan.nextLine();
+            if (!cpf.matches("\\d{11}")) {
+                System.out.println("CPF invalido (Deve conter 11 digitos)");
+            }
+        }while (!cpf.matches("\\d{11}"));
+
+        do {
+            System.out.println("Digite valor da compra: ");
+            valor = scan.nextInt();
+            scan.nextLine();
+
+            System.out.println("Digite seu sexo: Homem (H) Mulher (M) ");
+            sexo = scan.nextLine().toUpperCase();
+            if (sexo.equals("M")) {
+                valorM = valor - (valor * 15 / 100);
+                System.out.println("R$"+valorM + " com desconto para mulheres");
+            }
+            if (sexo.equals("H")) {
+                valorH = valor - (valor * 5 / 100);
+                System.out.println("R$"+valorH + " com desconto para Homens");
+            }
+            System.out.println("DESEJA SUA NOTA FISCAL? (S) ou (N)");
+            respostaNF = scan.nextLine().toUpperCase();
+
+            if (respostaNF.equals("S")) {
+                System.out.println(" ---------------------------------- ");
+                System.out.println("Nome: " + nome + " CPF: " + cpf);
+                System.out.println("Valor da sua compra: R$" + valor);
+                System.out.println(" ---------------------------------- ");
+            }
+            System.out.println(" DESEJA MAIS ALGUMA COISA? (S) ou (N)");
+            resposta = scan.nextLine().toUpperCase();
+
+        } while (resposta.equals("S"));
+
+        System.out.println(" Compra finalizada, volte sempre!! ");
+
+    }
+}
+
