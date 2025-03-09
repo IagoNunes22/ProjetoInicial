@@ -1,14 +1,22 @@
+import java.text.DecimalFormat;
+import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
+        DecimalFormat df = new DecimalFormat("0.00");
+        Scanner scan = new Scanner(System.in);
+        Date relogio = new Date();
+        //variaveis
         String nome, sexo;
         String resposta = "S";
-        int valor, valorM, valorH;
+        double valor, valorFinal= 0;
         String cpf;
         String respostaNF = "S";
+        int patrimonio;
 
 
             System.out.println(" ------------------------------ ");
@@ -17,10 +25,10 @@ public class Main {
             System.out.println(" ------------------------------ ");
 
             System.out.println("Digite seu nome: ");
-            nome = scan.nextLine();
+            nome = scan.nextLine().toUpperCase();
         do {
 
-            System.out.println("Digite seu cpf: (Sem simbolos especiais) ");
+            System.out.println("Digite seu cpf: (Sem caracters especiais) ");
             cpf = scan.nextLine();
             if (!cpf.matches("\\d{11}")) {
                 System.out.println("CPF invalido (Deve conter 11 digitos)");
@@ -29,35 +37,113 @@ public class Main {
 
         do {
             System.out.println("Digite valor da compra: ");
-            valor = scan.nextInt();
+            valor = scan.nextDouble();
             scan.nextLine();
 
             System.out.println("Digite seu sexo: Homem (H) Mulher (M) ");
             sexo = scan.nextLine().toUpperCase();
             if (sexo.equals("M")) {
-                valorM = valor - (valor * 15 / 100);
-                System.out.println("R$"+valorM + " com desconto para mulheres");
+                valorFinal = valor - (valor * 15 / 100);
+                System.out.println("R$"+df.format(valorFinal) + " com desconto para mulheres");
             }
             if (sexo.equals("H")) {
-                valorH = valor - (valor * 5 / 100);
-                System.out.println("R$"+valorH + " com desconto para Homens");
+                valorFinal = valor - (valor * 5 / 100);
+                System.out.println("R$"+df.format(valorFinal) + " com desconto para Homens");
             }
             System.out.println("DESEJA SUA NOTA FISCAL? (S) ou (N)");
             respostaNF = scan.nextLine().toUpperCase();
 
             if (respostaNF.equals("S")) {
+
                 System.out.println(" ---------------------------------- ");
-                System.out.println("Nome: " + nome + " CPF: " + cpf);
-                System.out.println("Valor da sua compra: R$" + valor);
+                System.out.println("            NOTA FISCAL ");
+                System.out.println("Horario e Dia da compra: "+ relogio.toString());
+                System.out.println("Lojas Avanas");
+                System.out.println("NOME: " + nome + " CPF: " + cpf);
+                System.out.println("VALOR DA COMPRA: R$" + df.format(valor));
+                System.out.println("VALOR DA COMPRA COM DESCONTO: R$" + df.format(valorFinal));
+
                 System.out.println(" ---------------------------------- ");
             }
+            int escolha;
+
             System.out.println(" DESEJA MAIS ALGUMA COISA? (S) ou (N)");
-            resposta = scan.nextLine().toUpperCase();
+
+            System.out.println("[1] para comprar novamente");
+
+            System.out.println("[2] para fazer o cartão da loja");
+
+            System.out.println("[3] para sair");
+            escolha = scan.nextInt();
+
+
+        switch (escolha) {
+
+            case 1:
+                scan.nextLine();
+                System.out.println("Confirma?");
+                resposta = scan.nextLine().toUpperCase();
+                break;
+            case 2:
+                System.out.println("VOCE ESCOLHEU FAZER O CARTÂO DA LOJA");
+                System.out.println("FAZENDO CARTÃO AVANA");
+                scan.nextLine();
+
+                System.out.println("Digite seu nome");
+                nome = scan.nextLine();
+
+                System.out.println("Digite seu cpf");
+                cpf = scan.nextLine();
+
+                System.out.println("Digite seu sexo");
+                sexo = scan.nextLine();
+
+                System.out.println("Digite seu patrimonio");
+                patrimonio = scan.nextInt();
+
+                System.out.println(" ----------------------- ");
+                System.out.println("CARTÃO GERADO COM SUCESSO!");
+
+                String numeroCartao = GerarCartao.gerarNumeroCartao();
+                System.out.println("Número de Cartão Gerado: " + numeroCartao);
+
+                scan.nextLine();
+                System.out.println("Confirma? S/N");
+                resposta = scan.nextLine().toUpperCase();
+                break;
+            case 3:
+                resposta = "N";
+            default:
+                System.out.println("Opção invalida");
+        }
 
         } while (resposta.equals("S"));
 
         System.out.println(" Compra finalizada, volte sempre!! ");
 
+
+
+     scan.close();
     }
 }
+
+///////////////////////////////////////////////////////////////////////
+
+import java.util.Random;
+
+public class GerarCartao {
+
+    public static String gerarNumeroCartao() {
+        Random random = new Random();
+        StringBuilder numero = new StringBuilder();
+
+        for (int i = 0; i < 16; i++) {
+
+            numero.append(random.nextInt(10)); // Gera um número entre 0 e 9
+        }
+        return numero.toString();
+
+    }
+}
+
 
